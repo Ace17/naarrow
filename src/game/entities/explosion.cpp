@@ -7,7 +7,7 @@
 #include "game/sounds.h"
 #include "game/entities/player.h"
 
-static auto const DURATION = 400;
+static auto const DURATION = 500;
 
 struct Explosion : Entity
 {
@@ -32,7 +32,7 @@ struct Explosion : Entity
     auto r = Actor(pos, MDL_EXPLOSION);
 
     r.ratio = time / (float)DURATION;
-    r.scale = Size2f(3, 3);
+    r.scale = Size2f(1.5, 1.5);
     r.pos += Vector2f(-r.scale.width * 0.5, -r.scale.height * 0.5);
 
     return r;
