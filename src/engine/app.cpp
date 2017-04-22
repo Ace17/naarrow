@@ -53,7 +53,7 @@ public:
     SDL_Init(0);
     memset(keys, 0, sizeof keys);
 
-    Display_init(768, 768);
+    Display_init(512, 512);
     m_audio.reset(createAudio());
 
     for(auto sound : getSounds())
