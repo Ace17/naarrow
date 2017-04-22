@@ -80,6 +80,11 @@ struct Rockman : Player, Damageable
     size = NORMAL_SIZE;
   }
 
+  void enter() override
+  {
+    respawnPoint = pos;
+  }
+
   virtual Actor getActor() const override
   {
     auto r = Actor(pos, MDL_ROCKMAN);
@@ -289,6 +294,13 @@ struct Rockman : Player, Damageable
     if(hurtDelay || life <= 0)
       control = Control {};
 
+    if(decrement(respawnDelay))
+    {
+      pos = respawnPoint;
+      life = 31;
+      blinking = 2000;
+    }
+
     time++;
     computeVelocity(control);
 
@@ -406,6 +418,7 @@ struct Rockman : Player, Damageable
   void die()
   {
     game->playSound(SND_DIE);
+    respawnDelay = 1000;
   }
 
   int debounceFire = 0;
@@ -423,6 +436,9 @@ struct Rockman : Player, Damageable
   bool ball = false;
   bool sliding = false;
   Control control {};
+
+  int respawnDelay = 0;
+  Vector2f respawnPoint;
 
   int upgrades = 0;
 };
