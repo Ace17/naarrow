@@ -30,23 +30,23 @@
     },
     {
       "name": "walkShoot",
-      "frames": [ 49, 50, 51, 52, 53, 54, 55, 56, 57 ]
+      "frames": [ 40, 41, 42, 43 ]
     },
     {
       "name": "dash",
-      "frames": [ 64, 65 ]
+      "frames": [ 64 ]
     },
     {
       "name": "dashAim",
-      "frames": [ 4 ]
+      "frames": [ 72 ]
     },
     {
       "name": "jump",
-      "frames": [ 4 ]
+      "frames": [ 16, 17, 18, 19 ]
     },
     {
       "name": "fall",
-      "frames": [ 83, 84 ]
+      "frames": [ 16, 17, 18, 19 ]
     },
     {
       "name": "fallShoot",
@@ -78,7 +78,7 @@
     },
     {
       "name": "climb",
-      "frames": [ 68, 69, 70 ]
+      "frames": [ 68 ]
     },
     {
       "name": "hurt",

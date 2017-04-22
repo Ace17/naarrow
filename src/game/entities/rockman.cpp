@@ -36,7 +36,7 @@ struct Bullet : Entity
 {
   Bullet()
   {
-    size = Size2f(0.5, 0.4);
+    size = Size2f(0.3, 0.3);
     collisionGroup = 0;
     collidesWith = CG_WALLS;
   }
@@ -323,7 +323,7 @@ struct Rockman : Player, Damageable
       {
         auto b = make_unique<Bullet>();
         auto sign = (dir == LEFT ? -1 : 1);
-        auto offsetV = vel.x ? Vector2f(0, 1) : Vector2f(0, 0.9);
+        auto offsetV = vel.x ? Vector2f(0, 1) : Vector2f(0, 1);
         auto offsetH = vel.x ? Vector2f(0.8, 0) : Vector2f(0.7, 0);
 
         if(sliding)
