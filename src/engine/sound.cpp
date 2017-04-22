@@ -78,7 +78,7 @@ struct SdlAudio : Audio
     if(!ifstream(path).is_open())
     {
       printf("music '%s' was not found, fallback on default music\n", path);
-      strcpy(path, "res/music/music-00.ogg");
+      strcpy(path, "res/music/default.ogg");
     }
 
     auto music = Mix_LoadMUS(path);
