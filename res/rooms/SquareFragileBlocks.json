@@ -2,7 +2,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJztk1EKwDAIQ\/Vz97\/wfscwzhZr2mEgUCz6xFoVEW2321t4hVD9Kv6Tx+RH+mGqev6R+0hPkbrofRWcrdzL8NfeoP1CMS8383+z+WLEvB6b\/y++FzuNLwM5WXwkFr96\/jNM1O8oP0Mzb7lCq+qy+NFds+4qzGTvwH\/7BuZaArA=",
+         "data":"eJztk8EOwCAIQ\/G4\/\/9hT0sWAs52KC6hSS8S+tBgE5FWLpePtKeIPJa9g4+KfUMvg9HXe7DcqHyrPjMTsiujXq9++3pY12fYmmWdjXrfcpD9z+aLcYZmn8BHZ4jkI\/91FT96\/\/7IF6Aniu8pi7\/7\/RmmNy\/KjxDDX6FVuVn82V2zajucyT6Br90B7hUCvg==",
          "encoding":"base64",
          "height":32,
          "name":"tiles",
@@ -116,6 +116,116 @@
                  "width":16,
                  "x":368,
                  "y":208
+                }, 
+                {
+                 "height":16,
+                 "id":30,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":176
+                }, 
+                {
+                 "height":16,
+                 "id":31,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":160
+                }, 
+                {
+                 "height":16,
+                 "id":32,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":144
+                }, 
+                {
+                 "height":16,
+                 "id":33,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":128
+                }, 
+                {
+                 "height":16,
+                 "id":34,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":112
+                }, 
+                {
+                 "height":16,
+                 "id":35,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":176
+                }, 
+                {
+                 "height":16,
+                 "id":36,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":176
+                }, 
+                {
+                 "height":16,
+                 "id":37,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":224
+                }, 
+                {
+                 "height":16,
+                 "id":38,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":224
+                }, 
+                {
+                 "height":16,
+                 "id":39,
+                 "name":"fragile_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":224
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -124,7 +234,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":30,
+ "nextobjectid":40,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
