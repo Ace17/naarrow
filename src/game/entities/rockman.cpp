@@ -115,7 +115,6 @@ struct Rockman : Player, Damageable
         }
         else
         {
-          r.pos.y -= 0.3;
           r.action = shootDelay ? ACTION_FALL_SHOOT : ACTION_FALL;
           r.ratio = vel.y > 0 ? 0 : 1;
         }
