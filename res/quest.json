@@ -63,7 +63,7 @@
                 {
                  "height":8,
                  "id":132,
-                 "name":"Square",
+                 "name":"SquareFragileBlocks",
                  "rotation":0,
                  "type":"4",
                  "visible":true,
@@ -74,7 +74,7 @@
                 {
                  "height":8,
                  "id":133,
-                 "name":"Square",
+                 "name":"SquareLowCeiling",
                  "rotation":0,
                  "type":"5",
                  "visible":true,
@@ -117,19 +117,8 @@
                 }, 
                 {
                  "height":4,
-                 "id":137,
-                 "name":"Stub",
-                 "rotation":0,
-                 "type":"5",
-                 "visible":true,
-                 "width":4,
-                 "x":80,
-                 "y":48
-                }, 
-                {
-                 "height":4,
                  "id":138,
-                 "name":"Stub",
+                 "name":"ItemShoot",
                  "rotation":0,
                  "type":"4",
                  "visible":true,
@@ -191,6 +180,17 @@
                  "width":4,
                  "x":88,
                  "y":52
+                }, 
+                {
+                 "height":4,
+                 "id":144,
+                 "name":"ItemBall",
+                 "rotation":0,
+                 "type":"5",
+                 "visible":true,
+                 "width":4,
+                 "x":80,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -225,7 +225,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":144,
+ "nextobjectid":145,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,

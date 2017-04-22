@@ -36,7 +36,7 @@ struct Bullet : Entity
 {
   Bullet()
   {
-    size = Size2f(0.3, 0.3);
+    size = Size2f(0.4, 0.4);
     collisionGroup = 0;
     collidesWith = CG_WALLS;
   }
