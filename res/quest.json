@@ -112,8 +112,8 @@
                  "type":"6",
                  "visible":true,
                  "width":4,
-                 "x":88,
-                 "y":56
+                 "x":92,
+                 "y":68
                 }, 
                 {
                  "height":4,
@@ -202,6 +202,17 @@
                  "width":8,
                  "x":64,
                  "y":36
+                }, 
+                {
+                 "height":16,
+                 "id":146,
+                 "name":"VerticalCorridor",
+                 "rotation":0,
+                 "type":"6",
+                 "visible":true,
+                 "width":4,
+                 "x":88,
+                 "y":56
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -236,7 +247,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":146,
+ "nextobjectid":147,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,

@@ -2,7 +2,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJztkksKwDAIRM2y979wV4UiGnTqJwUHZhNxnhEXEa3xeHykNUXkoewKvlfoDrUMRF\/\/gXKj8qW6ZSbPrex6tfrj62Vet7A5S3rb9VqykJ4OPglvSO7wbcriey1l\/51Pjp4ovqYufvX+EaY2r5cfIYSfoazcLr711qRahTvZJ\/C5b\/VtAr8=",
+         "data":"eJztksEKwDAIQ+1x\/\/\/Du2yXEotmWjswkEvFPCsOERntdvtIa4rIY9k7+F6xO9QyGH39B8uNykd1y0yeW1n1avXX12NUt7BnFnpb9VqymJ4KvoA3Jrf5NmXxvUbZf+eLoyeKr6mKv3v\/DFOb18uPEMPPUFZuFd96a6i2w5XsE\/izb6HBArY=",
          "encoding":"base64",
          "height":32,
          "name":"tiles",
@@ -181,17 +181,6 @@
                  "visible":true,
                  "width":16,
                  "x":192,
-                 "y":176
-                }, 
-                {
-                 "height":16,
-                 "id":36,
-                 "name":"fragile_block",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":208,
                  "y":176
                 }, 
                 {
