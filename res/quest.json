@@ -17,14 +17,14 @@
                  "y":4
                 }, 
                 {
-                 "height":8,
+                 "height":4,
                  "id":100,
-                 "name":"Square",
+                 "name":"Start",
                  "rotation":0,
                  "type":"0",
                  "visible":true,
-                 "width":8,
-                 "x":32,
+                 "width":4,
+                 "x":28,
                  "y":28
                 }, 
                 {
@@ -36,7 +36,7 @@
                  "visible":true,
                  "width":8,
                  "x":40,
-                 "y":28
+                 "y":32
                 }, 
                 {
                  "height":8,
@@ -47,7 +47,7 @@
                  "visible":true,
                  "width":8,
                  "x":48,
-                 "y":28
+                 "y":36
                 }, 
                 {
                  "height":8,
@@ -58,7 +58,7 @@
                  "visible":true,
                  "width":8,
                  "x":56,
-                 "y":28
+                 "y":40
                 }, 
                 {
                  "height":8,
@@ -69,7 +69,7 @@
                  "visible":true,
                  "width":8,
                  "x":64,
-                 "y":28
+                 "y":44
                 }, 
                 {
                  "height":8,
@@ -80,18 +80,117 @@
                  "visible":true,
                  "width":8,
                  "x":72,
-                 "y":28
+                 "y":48
                 }, 
                 {
                  "height":8,
                  "id":134,
-                 "name":"Square",
+                 "name":"SquareBigSpikes",
                  "rotation":0,
                  "type":"6",
                  "visible":true,
                  "width":8,
                  "x":80,
+                 "y":52
+                }, 
+                {
+                 "height":8,
+                 "id":135,
+                 "name":"Square",
+                 "rotation":0,
+                 "type":"0",
+                 "visible":true,
+                 "width":8,
+                 "x":32,
                  "y":28
+                }, 
+                {
+                 "height":4,
+                 "id":136,
+                 "name":"Climb",
+                 "rotation":0,
+                 "type":"6",
+                 "visible":true,
+                 "width":4,
+                 "x":88,
+                 "y":56
+                }, 
+                {
+                 "height":4,
+                 "id":137,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"5",
+                 "visible":true,
+                 "width":4,
+                 "x":80,
+                 "y":48
+                }, 
+                {
+                 "height":4,
+                 "id":138,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"4",
+                 "visible":true,
+                 "width":4,
+                 "x":72,
+                 "y":44
+                }, 
+                {
+                 "height":4,
+                 "id":139,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":4,
+                 "x":64,
+                 "y":40
+                }, 
+                {
+                 "height":4,
+                 "id":140,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"2",
+                 "visible":true,
+                 "width":4,
+                 "x":56,
+                 "y":36
+                }, 
+                {
+                 "height":4,
+                 "id":141,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"1",
+                 "visible":true,
+                 "width":4,
+                 "x":48,
+                 "y":32
+                }, 
+                {
+                 "height":4,
+                 "id":142,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"0",
+                 "visible":true,
+                 "width":4,
+                 "x":40,
+                 "y":28
+                }, 
+                {
+                 "height":4,
+                 "id":143,
+                 "name":"ItemDash",
+                 "rotation":0,
+                 "type":"6",
+                 "visible":true,
+                 "width":4,
+                 "x":88,
+                 "y":52
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -126,7 +225,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":135,
+ "nextobjectid":144,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,
