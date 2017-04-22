@@ -67,11 +67,11 @@ SRCS:=\
 
 OBJS:=$(SRCS:%.cpp=$(BIN)/%_cpp.o)
 
-$(BIN)/deeep.$(EXT): $(OBJS)
+$(BIN)/naarrow.$(EXT): $(OBJS)
 	@mkdir -p $(dir $@)
 	$(CXX) $^ -o '$@' $(LDFLAGS)
 
-TARGETS+=$(BIN)/deeep.$(EXT)
+TARGETS+=$(BIN)/naarrow.$(EXT)
 
 #------------------------------------------------------------------------------
 
