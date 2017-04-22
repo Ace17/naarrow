@@ -8,4 +8,4 @@ rsync \
   --exclude "*.bc" \
   --exclude "*.o" \
   --exclude "*.deps" \
-  -vr bin/asmjs/* alaiwans@code.alaiwan.org:public_html/deeep
+  -vr bin/asmjs/* alaiwans@code.alaiwan.org:public_html/naarrow

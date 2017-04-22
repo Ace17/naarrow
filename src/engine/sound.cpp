@@ -46,7 +46,6 @@ struct SdlAudio : Audio
 
   void loadSound(int id, string path) override
   {
-
     if(!ifstream(path).is_open())
     {
       printf("sound '%s' was not found, fallback on default sound\n", path.c_str());

@@ -164,7 +164,7 @@ private:
   void fpsChanged(int fps)
   {
     char szFps[128];
-    sprintf(szFps, "Deeep (%d FPS)", fps);
+    sprintf(szFps, "Naarrow (%d FPS)", fps);
     Display_setCaption(szFps);
   }
 
