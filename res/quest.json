@@ -134,8 +134,8 @@
                  "type":"3",
                  "visible":true,
                  "width":4,
-                 "x":64,
-                 "y":40
+                 "x":72,
+                 "y":36
                 }, 
                 {
                  "height":4,
@@ -191,6 +191,17 @@
                  "width":4,
                  "x":80,
                  "y":48
+                }, 
+                {
+                 "height":8,
+                 "id":145,
+                 "name":"ElevatorShaft",
+                 "rotation":0,
+                 "type":"3",
+                 "visible":true,
+                 "width":8,
+                 "x":64,
+                 "y":36
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -225,7 +236,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":145,
+ "nextobjectid":146,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,
