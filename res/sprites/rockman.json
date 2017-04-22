@@ -50,7 +50,7 @@
     },
     {
       "name": "fallShoot",
-      "frames": [ 92 ]
+      "frames": [ 24, 25, 26, 27 ]
     },
     {
       "name": "ladder",

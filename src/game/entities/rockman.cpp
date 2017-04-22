@@ -330,8 +330,6 @@ struct Rockman : Player, Damageable
         {
           sign = -sign;
         }
-        else if(!ground)
-          offsetV.y += 0.25;
 
         b->pos = pos + offsetV + offsetH * sign;
         b->vel = Vector2f(0.025, 0) * sign;
