@@ -391,6 +391,17 @@
                  "width":16,
                  "x":896,
                  "y":144
+                }, 
+                {
+                 "height":16,
+                 "id":81,
+                 "name":"crumble_block",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":784,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -399,7 +410,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":81,
+ "nextobjectid":82,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
