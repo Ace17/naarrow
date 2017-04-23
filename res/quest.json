@@ -24,18 +24,7 @@
                  "type":"0",
                  "visible":true,
                  "width":4,
-                 "x":28,
-                 "y":28
-                }, 
-                {
-                 "height":8,
-                 "id":129,
-                 "name":"Square",
-                 "rotation":0,
-                 "type":"1",
-                 "visible":true,
-                 "width":8,
-                 "x":40,
+                 "x":36,
                  "y":32
                 }, 
                 {
@@ -101,8 +90,8 @@
                  "type":"0",
                  "visible":true,
                  "width":8,
-                 "x":32,
-                 "y":28
+                 "x":40,
+                 "y":32
                 }, 
                 {
                  "height":4,
@@ -150,25 +139,14 @@
                 }, 
                 {
                  "height":4,
-                 "id":141,
-                 "name":"Stub",
-                 "rotation":0,
-                 "type":"1",
-                 "visible":true,
-                 "width":4,
-                 "x":48,
-                 "y":32
-                }, 
-                {
-                 "height":4,
                  "id":142,
                  "name":"Stub",
                  "rotation":0,
                  "type":"0",
                  "visible":true,
                  "width":4,
-                 "x":40,
-                 "y":28
+                 "x":48,
+                 "y":32
                 }, 
                 {
                  "height":4,
@@ -252,11 +230,11 @@
                  "id":151,
                  "name":"End",
                  "rotation":0,
-                 "type":"0",
+                 "type":"1",
                  "visible":true,
                  "width":4,
-                 "x":24,
-                 "y":28
+                 "x":32,
+                 "y":32
                 }],
          "opacity":1,
          "type":"objectgroup",
