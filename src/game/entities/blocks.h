@@ -30,7 +30,10 @@ struct CrumbleBlock : Entity
   void onCollide(Entity* other) override
   {
     if(other->pos.y > pos.y + size.height)
+    {
       disappearTimer = 1000;
+      game->playSound(SND_DISAPPEAR);
+    }
   }
 
   void tick() override

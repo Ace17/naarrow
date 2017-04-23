@@ -17,6 +17,7 @@ static const Resource sounds[] =
   { SND_DAMAGE, "res/sounds/damage.ogg" },
   { SND_TELEPORT, "res/sounds/teleport.ogg" },
   { SND_EXPLODE, "res/sounds/explode.ogg" },
+  { SND_DISAPPEAR, "res/sounds/disappear.ogg" },
 };
 
 static const Resource models[] =
