@@ -127,15 +127,15 @@
                  "y":36
                 }, 
                 {
-                 "height":4,
+                 "height":16,
                  "id":140,
-                 "name":"ItemDoubleJump",
+                 "name":"Column",
                  "rotation":0,
                  "type":"2",
                  "visible":true,
                  "width":4,
                  "x":56,
-                 "y":36
+                 "y":24
                 }, 
                 {
                  "height":4,
@@ -235,6 +235,17 @@
                  "width":4,
                  "x":32,
                  "y":32
+                }, 
+                {
+                 "height":4,
+                 "id":152,
+                 "name":"ItemDoubleJump",
+                 "rotation":0,
+                 "type":"2",
+                 "visible":true,
+                 "width":4,
+                 "x":60,
+                 "y":24
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -269,7 +280,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":152,
+ "nextobjectid":153,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,

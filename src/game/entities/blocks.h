@@ -75,6 +75,7 @@ struct FragileBlock : Entity, Damageable
   virtual void onDamage(int) override
   {
     disappear();
+    game->playSound(SND_DAMAGE);
   }
 
   void tick() override
