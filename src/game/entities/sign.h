@@ -7,7 +7,7 @@
 
 struct Sign : Entity
 {
-  Sign()
+  Sign(int which_) : which(which_)
   {
     size = Size2f(4, 2);
     solid = 0;
@@ -18,10 +18,14 @@ struct Sign : Entity
   virtual Actor getActor() const override
   {
     auto r = Actor(pos, MDL_SIGN);
-    r.scale = size;
+    r.scale = size * 2;
+    r.pos = pos - Vector2f(r.scale.width / 2, r.scale.height / 2);
     r.ratio = 0;
+    r.action = which;
 
     return r;
   }
+
+  int const which;
 };
 

@@ -246,6 +246,17 @@
                  "width":16,
                  "x":72,
                  "y":44
+                }, 
+                {
+                 "height":4,
+                 "id":151,
+                 "name":"End",
+                 "rotation":0,
+                 "type":"0",
+                 "visible":true,
+                 "width":4,
+                 "x":24,
+                 "y":28
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -280,7 +291,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":151,
+ "nextobjectid":152,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,

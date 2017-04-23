@@ -2,7 +2,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJxjZGBgYBzFoxgLhgFy9aEDcvXhA+Tqw2cePv\/jU09q2Ax0\/IIwAMt7ANA=",
+         "data":"eJxjZGBgYBzFA45JBdj04zKTFLXIerCx8ZlJTf0MRMoNlPuxuZGa4U8IUCvdAQCTHwCt",
          "encoding":"base64",
          "height":16,
          "name":"tiles",
@@ -21,7 +21,7 @@
                 {
                  "height":16,
                  "id":30,
-                 "name":"sign(0)",
+                 "name":"sign(1)",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -36,7 +36,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":31,
+ "nextobjectid":32,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

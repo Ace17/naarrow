@@ -164,7 +164,13 @@ static map<string, CreationFunc> getRegistry()
   r["sign(0)"] =
     [] (EntityArgs &)
     {
-      return make_unique<Sign>();
+      return make_unique<Sign>(0);
+    };
+
+  r["sign(1)"] =
+    [] (EntityArgs &)
+    {
+      return make_unique<Sign>(1);
     };
 
   return r;
