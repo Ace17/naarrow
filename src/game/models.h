@@ -14,5 +14,6 @@ enum
   MDL_BULLET,
   MDL_EXPLOSION,
   MDL_SPIKES,
+  MDL_SIGN,
 };
 

@@ -17,7 +17,18 @@
          "draworder":"topdown",
          "height":32,
          "name":"things",
-         "objects":[],
+         "objects":[
+                {
+                 "height":16,
+                 "id":30,
+                 "name":"sign(0)",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":64
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -25,7 +36,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":30,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
