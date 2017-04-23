@@ -178,7 +178,7 @@
                  "type":"6",
                  "visible":true,
                  "width":4,
-                 "x":88,
+                 "x":104,
                  "y":52
                 }, 
                 {
@@ -213,6 +213,17 @@
                  "width":4,
                  "x":88,
                  "y":56
+                }, 
+                {
+                 "height":4,
+                 "id":147,
+                 "name":"HorizontalCorridor",
+                 "rotation":0,
+                 "type":"6",
+                 "visible":true,
+                 "width":16,
+                 "x":88,
+                 "y":52
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -247,7 +258,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":147,
+ "nextobjectid":148,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,
