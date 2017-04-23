@@ -123,7 +123,7 @@
                  "type":"4",
                  "visible":true,
                  "width":4,
-                 "x":72,
+                 "x":88,
                  "y":44
                 }, 
                 {
@@ -235,6 +235,17 @@
                  "width":16,
                  "x":80,
                  "y":48
+                }, 
+                {
+                 "height":4,
+                 "id":150,
+                 "name":"ConveyorCorridor",
+                 "rotation":0,
+                 "type":"4",
+                 "visible":true,
+                 "width":16,
+                 "x":72,
+                 "y":44
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -269,7 +280,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":150,
+ "nextobjectid":151,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,
