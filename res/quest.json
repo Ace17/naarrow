@@ -139,17 +139,6 @@
                 }, 
                 {
                  "height":4,
-                 "id":142,
-                 "name":"Stub",
-                 "rotation":0,
-                 "type":"0",
-                 "visible":true,
-                 "width":4,
-                 "x":48,
-                 "y":32
-                }, 
-                {
-                 "height":4,
                  "id":143,
                  "name":"ItemDash",
                  "rotation":0,
@@ -233,8 +222,8 @@
                  "type":"1",
                  "visible":true,
                  "width":4,
-                 "x":32,
-                 "y":32
+                 "x":36,
+                 "y":20
                 }, 
                 {
                  "height":4,
@@ -246,6 +235,39 @@
                  "width":4,
                  "x":60,
                  "y":24
+                }, 
+                {
+                 "height":16,
+                 "id":153,
+                 "name":"LastColumn",
+                 "rotation":0,
+                 "type":"0",
+                 "visible":true,
+                 "width":4,
+                 "x":48,
+                 "y":20
+                }, 
+                {
+                 "height":4,
+                 "id":154,
+                 "name":"Stub",
+                 "rotation":0,
+                 "type":"0",
+                 "visible":true,
+                 "width":4,
+                 "x":52,
+                 "y":24
+                }, 
+                {
+                 "height":4,
+                 "id":155,
+                 "name":"LastCorridor",
+                 "rotation":0,
+                 "type":"1",
+                 "visible":true,
+                 "width":8,
+                 "x":40,
+                 "y":20
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -280,7 +302,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":153,
+ "nextobjectid":156,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,
