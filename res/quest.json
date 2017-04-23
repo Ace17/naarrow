@@ -41,7 +41,7 @@
                 {
                  "height":8,
                  "id":130,
-                 "name":"Square",
+                 "name":"SquareDoubleJump",
                  "rotation":0,
                  "type":"2",
                  "visible":true,
@@ -140,7 +140,7 @@
                 {
                  "height":4,
                  "id":140,
-                 "name":"Stub",
+                 "name":"ItemDoubleJump",
                  "rotation":0,
                  "type":"2",
                  "visible":true,
@@ -189,7 +189,7 @@
                  "type":"5",
                  "visible":true,
                  "width":4,
-                 "x":80,
+                 "x":96,
                  "y":48
                 }, 
                 {
@@ -224,6 +224,17 @@
                  "width":16,
                  "x":88,
                  "y":52
+                }, 
+                {
+                 "height":4,
+                 "id":149,
+                 "name":"SpikyCorridor",
+                 "rotation":0,
+                 "type":"5",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -258,7 +269,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":148,
+ "nextobjectid":150,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":4,
