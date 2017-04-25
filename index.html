@@ -87,13 +87,13 @@
   </head>
   <body bgcolor="#000000">
 
-    <div class="spinner" id='spinner'></div>
     <div class="emscripten" id="status">Downloading...</div>
 
     <span id='controls'>
       <span><input type="checkbox" id="resize">Resize canvas</span>
       <span><input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
       <span><input type="button" value="Fullscreen" onclick="Module.requestFullscreen(document.getElementById('pointerLock').checked, document.getElementById('resize').checked)"> </span>
+      <span><input type="button" value="Play"> </span> <!-- dummy button so the user gets focus -->
     </span>
 
     <div class="emscripten">
@@ -104,10 +104,13 @@
       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
     </div>
 
+    <div class="spinner" id='spinner'></div>
+
     <script type='text/javascript'>
       var statusElement = document.getElementById('status');
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
+          
 
       var Module = {
         preRun: [],
@@ -121,8 +124,6 @@
           // application robust, you may want to override this behavior before shipping!
           // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
           canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
-
-          canvas.focus();
 
           return canvas;
         })(),
