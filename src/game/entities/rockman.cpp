@@ -212,6 +212,7 @@ struct Rockman : Player, Damageable
           doubleJumped = false;
           vel.y *= 0.97;
           sliding = true;
+          dashDelay = 0;
         }
       }
     }
@@ -232,6 +233,7 @@ struct Rockman : Player, Damageable
         vel.y = 0.015;
         climbDelay = CLIMB_DELAY;
         doubleJumped = false;
+        dashDelay = 0;
       }
       else if((upgrades & UPGRADE_DJUMP) && !doubleJumped)
       {
