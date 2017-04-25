@@ -71,7 +71,7 @@ struct Bullet : Entity
   int life = 1000;
 };
 
-static auto const NORMAL_SIZE = Size2f(0.9, 1.7);
+static auto const NORMAL_SIZE = Size2f(0.7, 1.7);
 
 struct Rockman : Player, Damageable
 {
