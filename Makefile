@@ -15,6 +15,7 @@ endif
 all: true_all
 
 PKGS:=\
+	gl\
 	sdl2\
 	SDL2_image\
 	SDL2_mixer\
@@ -32,7 +33,6 @@ CXXFLAGS+=-I.
 CXXFLAGS+=-std=c++14
 CXXFLAGS+=$(SDL_CFLAGS)
 LDFLAGS+=$(SDL_LDFLAGS)
-LDFLAGS+=-lGL
 
 CXXFLAGS+=-O3
 
