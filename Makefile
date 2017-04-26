@@ -65,9 +65,7 @@ SRCS:=\
 	$(BIN)/vertex.glsl.cpp\
 	$(BIN)/fragment.glsl.cpp\
 
-OBJS:=$(SRCS:%.cpp=$(BIN)/%_cpp.o)
-
-$(BIN)/naarrow.$(EXT): $(OBJS)
+$(BIN)/naarrow.$(EXT): $(SRCS:%.cpp=$(BIN)/%_cpp.o)
 	@mkdir -p $(dir $@)
 	$(CXX) $^ -o '$@' $(LDFLAGS)
 
@@ -102,8 +100,7 @@ SRCS_TESTS:=\
 SRCS_TESTS+=\
 	src/game/level_tiled.cpp\
 
-OBJS_TESTS:=$(SRCS_TESTS:%.cpp=$(BIN)/%_cpp.o)
-$(BIN)/tests.$(EXT): $(OBJS_TESTS)
+$(BIN)/tests.$(EXT): $(SRCS_TESTS:%.cpp=$(BIN)/%_cpp.o)
 	@mkdir -p $(dir $@)
 	$(CXX) $^ -o '$@' $(LDFLAGS)
 
