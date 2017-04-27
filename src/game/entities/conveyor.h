@@ -24,7 +24,12 @@ struct Conveyor : Entity
     return r;
   }
 
-  void onCollide(Entity* other) override
+  virtual void enter() override
+  {
+    Body::onCollision = [this] (Body* other) { touch(other); };
+  }
+
+  void touch(Body* other)
   {
     // avoid infinite recursion
     // (if the conveyor pushes the player towards the conveyor)
