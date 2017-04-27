@@ -49,14 +49,18 @@ struct Detector : Entity
     decrement(touchDelay);
   }
 
-  virtual void onCollide(Entity*) override
+  virtual void enter() override
   {
-    if(touchDelay)
-      return;
+    Body::onCollision =
+      [ = ] (Body*)
+      {
+        if(touchDelay)
+          return;
 
-    game->playSound(SND_SWITCH);
-    game->postEvent(make_unique<TouchDetectorEvent>(id));
-    touchDelay = 1000;
+        game->playSound(SND_SWITCH);
+        game->postEvent(make_unique<TouchDetectorEvent>(id));
+        touchDelay = 1000;
+      };
   }
 
   int id = 0;
@@ -73,20 +77,24 @@ struct RoomBoundaryDetector : Entity
     collidesWith = CG_PLAYER | CG_SOLIDPLAYER;
   }
 
+  virtual void enter() override
+  {
+    Body::onCollision =
+      [ = ] (Body*)
+      {
+        if(touched)
+          return;
+
+        game->postEvent(make_unique<TouchLevelBoundary>(targetLevel, transform));
+        touched = true;
+      };
+  }
+
   virtual Actor getActor() const override
   {
     auto r = Actor(pos, MDL_RECT);
     r.scale = size;
     return r;
-  }
-
-  virtual void onCollide(Entity*) override
-  {
-    if(touched)
-      return;
-
-    game->postEvent(make_unique<TouchLevelBoundary>(targetLevel, transform));
-    touched = true;
   }
 
   int targetLevel = 0;
