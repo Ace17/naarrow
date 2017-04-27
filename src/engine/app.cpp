@@ -154,6 +154,8 @@ private:
       Display_drawText(Vector2f(0, 0), "PAUSE");
     else if(m_slowMotion)
       Display_drawText(Vector2f(0, 0), "SLOW-MOTION MODE");
+    else if(m_control.debug)
+      Display_drawText(Vector2f(0, 0), "DEBUG MODE");
 
     Display_endDraw();
   }
