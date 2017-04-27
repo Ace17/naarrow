@@ -25,9 +25,7 @@ struct Damageable
 
 struct Entity : Body
 {
-  virtual ~Entity()
-  {
-  }
+  virtual ~Entity() {}
 
   virtual void enter()
   {
@@ -40,18 +38,12 @@ struct Entity : Body
       };
   }
 
-  virtual void leave()
-  {
-  }
+  virtual void leave() {}
 
   virtual Actor getActor() const = 0;
-  virtual void tick()
-  {
-  }
+  virtual void tick() {}
 
-  virtual void onCollide(Entity* /*other*/)
-  {
-  }
+  virtual void onCollide(Entity* /*other*/) {}
 
   bool dead = false;
   Vector2f vel;
