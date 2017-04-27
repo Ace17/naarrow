@@ -3,8 +3,6 @@
 enum
 {
   SND_PAUSE,
-  SND_CHIRP,
-  SND_BEEP,
   SND_FIRE,
   SND_JUMP,
   SND_LAND,
@@ -13,7 +11,6 @@ enum
   SND_DIE,
   SND_BONUS,
   SND_DAMAGE,
-  SND_TELEPORT,
   SND_EXPLODE,
   SND_DISAPPEAR,
 };

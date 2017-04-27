@@ -5,17 +5,14 @@
 static const Resource sounds[] =
 {
   { SND_PAUSE, "res/sounds/pause.ogg" },
-  { SND_CHIRP, "res/sounds/base.ogg" },
   { SND_FIRE, "res/sounds/fire.ogg" },
   { SND_JUMP, "res/sounds/jump.ogg" },
-  { SND_BEEP, "res/sounds/beep.ogg" },
   { SND_LAND, "res/sounds/land.ogg" },
   { SND_SWITCH, "res/sounds/switch.ogg" },
   { SND_HURT, "res/sounds/hurt.ogg" },
   { SND_DIE, "res/sounds/die.ogg" },
   { SND_BONUS, "res/sounds/bonus.ogg" },
   { SND_DAMAGE, "res/sounds/damage.ogg" },
-  { SND_TELEPORT, "res/sounds/teleport.ogg" },
   { SND_EXPLODE, "res/sounds/explode.ogg" },
   { SND_DISAPPEAR, "res/sounds/disappear.ogg" },
 };
