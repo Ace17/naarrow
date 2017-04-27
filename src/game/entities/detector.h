@@ -82,11 +82,8 @@ struct RoomBoundaryDetector : Entity
     Body::onCollision =
       [ = ] (Body*)
       {
-        if(touched)
-          return;
-
         game->postEvent(make_unique<TouchLevelBoundary>(targetLevel, transform));
-        touched = true;
+        Body::onCollision = &nop;
       };
   }
 
@@ -99,7 +96,6 @@ struct RoomBoundaryDetector : Entity
 
   int targetLevel = 0;
   Vector2f transform;
-  bool touched = false;
 };
 
 struct RoomBoundaryBlocker : Entity
