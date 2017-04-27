@@ -82,10 +82,9 @@ public:
       m_lastTime += m_slowMotion ? TIMESTEP * 10 : TIMESTEP;
 
       if(!m_paused)
-      {
         m_scene->tick(m_control);
-        dirty = true;
-      }
+
+      dirty = true;
     }
 
     if(dirty)
