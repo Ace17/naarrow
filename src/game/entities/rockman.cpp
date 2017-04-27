@@ -163,7 +163,7 @@ struct Rockman : Player, Damageable
       r.scale.width *= -1;
 
     if(blinking)
-      r.effect = EFFECT_BLINKING;
+      r.effect = Effect::Blinking;
 
     return r;
   }

@@ -40,7 +40,7 @@ struct Switch : Entity
     r.scale = size;
 
     if(blinking)
-      r.effect = EFFECT_BLINKING;
+      r.effect = Effect::Blinking;
 
     r.action = state ? 1 : 0;
     return r;
@@ -159,7 +159,7 @@ struct BreakableDoor : Entity, Damageable
     r.scale = size;
 
     if(blinking)
-      r.effect = EFFECT_BLINKING;
+      r.effect = Effect::Blinking;
 
     return r;
   }
