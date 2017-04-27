@@ -5,6 +5,10 @@ using namespace std;
 
 struct Body
 {
+  virtual ~Body()
+  {
+  }; // make type polymorphic
+
   bool solid = false;
   bool pusher = false; // push and crush?
   Vector2f pos;
@@ -14,7 +18,9 @@ struct Body
   Body* ground = nullptr; // the body we rest on (if any)
 
   // only called if (this->collidesWith & other->collisionGroup)
-  virtual void onCollision(Body* /*other*/)
+  function<void(Body*)> onCollision = &nop;
+
+  static void nop(Body*)
   {
   }
 
@@ -31,6 +37,7 @@ struct Body
 
 struct IPhysicsProbe
 {
+  // called by entities
   virtual bool moveBody(Body* body, Vector2f delta) = 0;
   virtual bool isSolid(const Body* body, Rect2f) const = 0;
   virtual Body* getBodiesInRect(Rect2f myRect, int collisionGroup, bool onlySolid = false, const Body* except = nullptr) const = 0;

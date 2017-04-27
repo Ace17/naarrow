@@ -31,18 +31,17 @@ struct Entity : Body
 
   virtual void enter()
   {
+    onCollision =
+      [ = ] (Body* otherBody)
+      {
+        auto other = dynamic_cast<Entity*>(otherBody);
+        assert(other);
+        onCollide(other);
+      };
   }
 
   virtual void leave()
   {
-  }
-
-  // from Body
-  virtual void onCollision(Body* otherBody) override
-  {
-    auto other = dynamic_cast<Entity*>(otherBody);
-    assert(other);
-    onCollide(other);
   }
 
   virtual Actor getActor() const = 0;
@@ -50,7 +49,6 @@ struct Entity : Body
   {
   }
 
-  // only called if (this->collidesWith & other->collisionGroup)
   virtual void onCollide(Entity* /*other*/)
   {
   }
