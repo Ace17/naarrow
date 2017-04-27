@@ -37,6 +37,7 @@ void Display_loadModel(int id, const char* imagePath);
 void Display_beginDraw();
 void Display_endDraw();
 void Display_drawActor(Rect2f where, int modelId, bool blinking, int actionIdx, float frame);
+void Display_drawText(Vector2f pos, char const* text);
 
 Audio* createAudio(bool dummy = false);
 
@@ -148,6 +149,11 @@ private:
       auto where = Rect2f(actor.pos.x, actor.pos.y, actor.scale.width, actor.scale.height);
       Display_drawActor(where, (int)actor.model, actor.effect == Effect::Blinking, actor.action, actor.ratio);
     }
+
+    if(m_paused)
+      Display_drawText(Vector2f(0, 0), "PAUSE");
+    else if(m_slowMotion)
+      Display_drawText(Vector2f(0, 0), "SLOW-MOTION MODE");
 
     Display_endDraw();
   }

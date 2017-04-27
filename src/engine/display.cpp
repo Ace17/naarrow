@@ -29,6 +29,7 @@ using namespace std;
 #include "model.h"
 
 static vector<Model> g_Models;
+static Model g_fontModel;
 static GLuint g_ProgramId;
 
 #ifdef NDEBUG
@@ -222,39 +223,48 @@ Model rectangularModel(float w, float h)
 }
 
 static
-Model loadAnimation(string path)
+Model loadTiledAnimation(string path, int count, int COLS, int SIZE)
 {
   auto m = rectangularModel(1, 1);
 
+  for(int i = 0; i < count; ++i)
+  {
+    auto col = i % COLS;
+    auto row = i / COLS;
+
+    Action action;
+    action.addTexture(path, Rect2i(col * SIZE, row * SIZE, SIZE, SIZE));
+    m.actions.push_back(action);
+  }
+
+  return m;
+}
+
+static
+Model loadAnimation(string path)
+{
   if(endsWith(path, ".json"))
   {
+    auto m = rectangularModel(1, 1);
+
     auto m2 = loadModel(path);
     m.actions = move(m2.actions);
+    return m;
   }
   else if(endsWith(path, ".mdl"))
   {
     path = setExtension(path, "png");
 
-    for(int i = 0; i < 64 * 2; ++i)
-    {
-      auto const COLS = 8;
-      auto col = i % COLS;
-      auto row = i / COLS;
-
-      auto const SIZE = 16;
-      Action action;
-      action.addTexture(path, Rect2i(col * SIZE, row * SIZE, SIZE, SIZE));
-      m.actions.push_back(action);
-    }
+    return loadTiledAnimation(path, 64 * 2, 8, 16);
   }
   else
   {
+    auto m = rectangularModel(1, 1);
     Action action;
     action.addTexture(path, Rect2i());
     m.actions.push_back(action);
+    return m;
   }
-
-  return m;
 }
 
 void Display_loadModel(int id, const char* path)
@@ -316,6 +326,8 @@ void Display_init(int width, int height)
 
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+  g_fontModel = loadTiledAnimation("res/font.png", 256, 16, 8);
 }
 
 void Display_setCaption(const char* caption)
@@ -323,10 +335,9 @@ void Display_setCaption(const char* caption)
   SDL_SetWindowTitle(mainWindow, caption);
 }
 
-void Display_drawActor(Rect2f where, int modelId, bool blinking, int actionIdx, float ratio)
+static
+void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, float ratio)
 {
-  auto& model = g_Models.at(modelId);
-
   auto const colorId = glGetUniformLocation(g_ProgramId, "v_color");
 
   SAFE_GL(glUniform4f(colorId, 0, 0, 0, 0));
@@ -381,6 +392,28 @@ void Display_drawActor(Rect2f where, int modelId, bool blinking, int actionIdx, 
   SAFE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indices));
 
   SAFE_GL(glDrawElements(GL_TRIANGLES, model.numIndices, GL_UNSIGNED_SHORT, 0));
+}
+
+void Display_drawActor(Rect2f where, int modelId, bool blinking, int actionIdx, float ratio)
+{
+  auto& model = g_Models.at(modelId);
+  drawModel(where, model, blinking, actionIdx, ratio);
+}
+
+void Display_drawText(Vector2f pos, char const* text)
+{
+  Rect2f rect;
+  rect.width = 0.5;
+  rect.height = 0.5;
+  rect.x = pos.x - strlen(text) * rect.width / 2;
+  rect.y = pos.y;
+
+  while(*text)
+  {
+    drawModel(rect, g_fontModel, false, *text, 0);
+    rect.x += rect.width;
+    ++text;
+  }
 }
 
 void Display_beginDraw()
