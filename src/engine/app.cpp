@@ -131,9 +131,11 @@ private:
     m_control.right = keys[SDL_SCANCODE_RIGHT];
     m_control.up = keys[SDL_SCANCODE_UP];
     m_control.down = keys[SDL_SCANCODE_DOWN];
+
     m_control.fire = keys[SDL_SCANCODE_Z];
     m_control.jump = keys[SDL_SCANCODE_X];
     m_control.dash = keys[SDL_SCANCODE_C];
+    m_control.suicide = keys[SDL_SCANCODE_R];
 
     m_control.debug = keys[SDL_SCANCODE_SCROLLLOCK];
   }
