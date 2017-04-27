@@ -51,7 +51,12 @@ struct Switch : Entity
     blinking = max(0, blinking - 1);
   }
 
-  virtual void onCollide(Entity*) override
+  virtual void enter() override
+  {
+    Body::onCollision = [this] (Body*) { touch(); };
+  }
+
+  void touch()
   {
     if(blinking || state)
       return;
