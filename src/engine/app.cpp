@@ -12,8 +12,6 @@
  * License, or (at your option) any later version.
  */
 
-#include <stdio.h>
-#include <string.h>
 #include <stdexcept>
 #include <iostream>
 #include <cassert>
@@ -52,7 +50,6 @@ public:
     m_scene(createGame(this, m_args))
   {
     SDL_Init(0);
-    memset(keys, 0, sizeof keys);
 
     Display_init(512, 512);
     m_audio.reset(createAudio());
@@ -218,10 +215,9 @@ private:
   {
     m_textbox = msg;
     m_textboxDelay = 60 * 2;
-    printf("%s\n", msg);
   }
 
-  int keys[SDL_NUM_SCANCODES];
+  int keys[SDL_NUM_SCANCODES] {};
   int m_running = 1;
 
   int m_lastTime;
