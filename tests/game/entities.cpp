@@ -69,6 +69,10 @@ struct NullGame : IGame
   {
     return Vector2f(0, 0);
   }
+
+  virtual void textBox(char const*)
+  {
+  }
 };
 
 struct NullPhysicsProbe : IPhysicsProbe
@@ -114,7 +118,7 @@ unittest("Entity: pickup bonus")
   NullPhysicsProbe physics;
   MockPlayer player;
 
-  auto ent = makeBonus(0, 4);
+  auto ent = makeBonus(0, 4, "cool");
   ent->game = &game;
   ent->physics = &physics;
 
@@ -134,7 +138,7 @@ bool nearlyEquals(float expected, float actual)
 
 unittest("Entity: animate")
 {
-  auto ent = makeBonus(0, 4);
+  auto ent = makeBonus(0, 4, "cool");
 
   float minVal = 10.0f;
   float maxVal = -10.0f;

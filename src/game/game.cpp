@@ -36,7 +36,7 @@ unique_ptr<IPhysics> createPhysics();
 
 struct Game : Scene, IGame
 {
-  Game() : m_tiles(Size2i(1, 1))
+  Game(View* view) : m_view(view), m_tiles(Size2i(1, 1))
   {
     m_shouldLoadLevel = true;
     m_physics = createPhysics();
@@ -265,7 +265,13 @@ struct Game : Scene, IGame
     return m_player->pos;
   }
 
+  void textBox(char const* msg) override
+  {
+    m_view->textBox(msg);
+  }
+
   Player* m_player = nullptr;
+  View* const m_view;
   uvector<Entity> m_entities;
   uvector<Entity> m_spawned;
   unique_ptr<IPhysics> m_physics;
@@ -341,9 +347,9 @@ struct Game : Scene, IGame
   }
 };
 
-Scene* createGame(vector<string> args)
+Scene* createGame(View* view, vector<string> args)
 {
-  auto r = make_unique<Game>();
+  auto r = make_unique<Game>(view);
 
   if(args.size() == 1)
     r->m_level = atoi(args[0].c_str());

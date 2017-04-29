@@ -77,5 +77,6 @@ struct IGame
   virtual void subscribeForEvents(IEventSink*) = 0;
   virtual void unsubscribeForEvents(IEventSink*) = 0;
   virtual Vector2f getPlayerPosition() = 0;
+  virtual void textBox(char const* msg) = 0;
 };
 

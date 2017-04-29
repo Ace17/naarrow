@@ -55,6 +55,12 @@ struct Control
   bool debug;
 };
 
+// outside world, seen by the game
+struct View
+{
+  virtual void textBox(char const* msg) = 0;
+};
+
 // game, seen by the outside world
 
 struct Scene

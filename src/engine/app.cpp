@@ -41,15 +41,15 @@ void Display_drawText(Vector2f pos, char const* text);
 
 Audio* createAudio(bool dummy = false);
 
-Scene* createGame(vector<string> argv);
+Scene* createGame(View* view, vector<string> argv);
 
-class App
+class App : View
 {
 public:
   App(vector<string> argv)
     :
     m_args(argv),
-    m_scene(createGame(m_args))
+    m_scene(createGame(this, m_args))
   {
     SDL_Init(0);
     memset(keys, 0, sizeof keys);
@@ -157,6 +157,12 @@ private:
     else if(m_control.debug)
       Display_drawText(Vector2f(0, 0), "DEBUG MODE");
 
+    if(m_textboxDelay > 0)
+    {
+      Display_drawText(Vector2f(0, 2), m_textbox.c_str());
+      m_textboxDelay--;
+    }
+
     Display_endDraw();
   }
 
@@ -188,7 +194,7 @@ private:
       onQuit();
 
     if(evt->key.keysym.sym == SDLK_F2)
-      m_scene.reset(createGame(m_args));
+      m_scene.reset(createGame(this, m_args));
 
     if(evt->key.keysym.sym == SDLK_TAB)
       m_slowMotion = !m_slowMotion;
@@ -207,6 +213,14 @@ private:
     keys[evt->key.keysym.scancode] = 0;
   }
 
+  // View implementation
+  void textBox(char const* msg) override
+  {
+    m_textbox = msg;
+    m_textboxDelay = 60 * 2;
+    printf("%s\n", msg);
+  }
+
   int keys[SDL_NUM_SCANCODES];
   int m_running = 1;
 
@@ -219,6 +233,9 @@ private:
   bool m_slowMotion = false;
   bool m_paused = false;
   unique_ptr<Audio> m_audio;
+
+  string m_textbox;
+  int m_textboxDelay;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
