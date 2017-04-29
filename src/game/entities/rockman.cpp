@@ -356,7 +356,7 @@ struct Rockman : Player, Damageable
     if(control.down && !ball && (upgrades & UPGRADE_BALL))
     {
       ball = true;
-      size = Size2f(0.9, 0.9);
+      size = Size2f(NORMAL_SIZE.width, 0.9);
     }
 
     if(control.up && ball)
