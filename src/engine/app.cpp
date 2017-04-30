@@ -133,7 +133,7 @@ private:
     m_control.jump = keys[SDL_SCANCODE_X];
     m_control.dash = keys[SDL_SCANCODE_C];
 
-    m_control.suicide = keys[SDL_SCANCODE_R];
+    m_control.restart = keys[SDL_SCANCODE_R];
     m_control.debug = keys[SDL_SCANCODE_SCROLLLOCK];
   }
 

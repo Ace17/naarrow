@@ -374,7 +374,7 @@ struct Rockman : Player, Damageable
       }
     }
 
-    if(control.suicide)
+    if(control.restart)
       onDamage(10000);
 
     collisionGroup = CG_PLAYER;

@@ -50,7 +50,7 @@ struct Control
   bool jump;
   bool dash;
 
-  bool suicide; // restart level in case one gets stuck
+  bool restart; // restart level in case one gets stuck
 
   bool debug;
 };
