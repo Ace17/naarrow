@@ -33,7 +33,7 @@ struct Explosion : Entity
 
     r.ratio = time / (float)DURATION;
     r.scale = UnitSize * 1.5;
-    r.pos += Vector(-r.scale.width * 0.5, -r.scale.height * 0.5);
+    r.pos -= r.scale * 0.5;
 
     return r;
   }
