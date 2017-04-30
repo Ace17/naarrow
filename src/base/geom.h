@@ -78,6 +78,10 @@ struct GenericVector
   {
   }
 
+  GenericVector(GenericSize<T> size) : x(size.width), y(size.height)
+  {
+  }
+
   MyType operator += (MyType const& other)
   {
     x += other.x;

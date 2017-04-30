@@ -54,7 +54,7 @@ struct Spider : Entity, Damageable
   Spider()
   {
     dir = -1.0f;
-    size = Size(1, 1);
+    size = UnitSize;
     collisionGroup = CG_WALLS;
     collidesWith = CG_SOLIDPLAYER;
   }
@@ -63,7 +63,7 @@ struct Spider : Entity, Damageable
   {
     auto r = Actor(pos, MDL_RECT);
 
-    r.scale = Size(1, 1);
+    r.scale = UnitSize;
 
     if(blinking)
       r.effect = Effect::Blinking;
