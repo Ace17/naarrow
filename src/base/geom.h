@@ -233,13 +233,13 @@ struct Matrix2
   T& get(int x, int y)
   {
     assert(isInside(x, y));
-    return data[x + y * size.width];
+    return data[raster(x, y)];
   }
 
   const T& get(int x, int y) const
   {
     assert(isInside(x, y));
-    return data[x + y * size.width];
+    return data[raster(x, y)];
   }
 
   void set(int x, int y, T const& val)
@@ -277,5 +277,10 @@ struct Matrix2
 
 private:
   T* data = nullptr;
+
+  int raster(int x, int y) const
+  {
+    return y * size.width + x;
+  }
 };
 
