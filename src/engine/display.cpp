@@ -381,6 +381,14 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
     dx, dy, 0, 1,
   };
 
+  // scaling
+  {
+    for(auto& val : mat)
+      val *= 0.125;
+
+    mat[15] = 1;
+  }
+
   auto const MVP = glGetUniformLocation(g_ProgramId, "MVP");
   assert(MVP >= 0);
 
@@ -420,19 +428,6 @@ void Display_beginDraw()
 
   SAFE_GL(glClearColor(0, 0, 0, 1));
   SAFE_GL(glClear(GL_COLOR_BUFFER_BIT));
-
-  {
-    auto const scaleMatrixId = glGetUniformLocation(g_ProgramId, "Scale");
-    auto const s = 0.125f;
-    float mat[16] =
-    {
-      s, 0, 0, 0,
-      0, s, 0, 0,
-      0, 0, s, 0,
-      0, 0, 0, 1,
-    };
-    SAFE_GL(glUniformMatrix4fv(scaleMatrixId, 1, GL_FALSE, mat));
-  }
 
   {
     auto const positionLoc = glGetAttribLocation(g_ProgramId, "a_position");
