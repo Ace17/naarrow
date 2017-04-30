@@ -38,7 +38,7 @@ struct Game : Scene, IGame
   {
     m_shouldLoadLevel = true;
     m_physics = createPhysics();
-    m_physics->setEdifice(bind(&Game::isRectSolid, this, placeholders::_1));
+    m_physics->setEdifice(bind(&Game::isBoxSolid, this, placeholders::_1));
   }
 
   ////////////////////////////////////////////////////////////////
@@ -86,15 +86,15 @@ struct Game : Scene, IGame
 
     addActorsForTileMap(r, cameraPos);
 
-    Box cameraRect;
-    cameraRect.width = 16;
-    cameraRect.height = 16;
-    cameraRect.x = cameraPos.x - cameraRect.width / 2;
-    cameraRect.y = cameraPos.y - cameraRect.height / 2;
+    Box cameraBox;
+    cameraBox.width = 16;
+    cameraBox.height = 16;
+    cameraBox.x = cameraPos.x - cameraBox.width / 2;
+    cameraBox.y = cameraPos.y - cameraBox.height / 2;
 
     for(auto& entity : m_entities)
     {
-      if(!overlaps(entity->getRect(), cameraRect))
+      if(!overlaps(entity->getBox(), cameraBox))
         continue;
 
       r.push_back(entity->getActor());
@@ -299,13 +299,13 @@ struct Game : Scene, IGame
 
   static Actor getDebugActor(Entity* entity)
   {
-    auto rect = entity->getRect();
+    auto rect = entity->getBox();
     auto r = Actor(Vector(rect.x, rect.y), MDL_RECT);
     r.scale = rect;
     return r;
   }
 
-  bool isRectSolid(Box rect)
+  bool isBoxSolid(Box rect)
   {
     if(isPointSolid(Vector(rect.x, rect.y)))
       return true;

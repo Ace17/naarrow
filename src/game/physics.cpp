@@ -45,7 +45,7 @@ struct Physics : IPhysics
 
   bool moveBody(Body* body, Vector delta)
   {
-    auto rect = body->getRect();
+    auto rect = body->getBox();
     rect.x += delta.x;
     rect.y += delta.y;
 
@@ -53,7 +53,7 @@ struct Physics : IPhysics
 
     if(blocked)
     {
-      if(auto blocker = getSolidBodyInRect(rect, body))
+      if(auto blocker = getSolidBodyInBox(rect, body))
         collideBodies(*body, *blocker);
     }
     else
@@ -71,7 +71,7 @@ struct Physics : IPhysics
 
         // push potential non-solid bodies
         for(auto other : m_bodies)
-          if(other != body && overlaps(rect, other->getRect()))
+          if(other != body && overlaps(rect, other->getBox()))
             moveBody(other, delta);
       }
     }
@@ -82,7 +82,7 @@ struct Physics : IPhysics
       auto feet = rect;
       feet.y -= 0.01;
       feet.height = 0.01;
-      body->ground = getSolidBodyInRect(feet, body);
+      body->ground = getSolidBodyInBox(feet, body);
     }
 
     return !blocked;
@@ -90,7 +90,7 @@ struct Physics : IPhysics
 
   bool isSolid(const Body* except, Box rect) const
   {
-    if(getSolidBodyInRect(rect, except))
+    if(getSolidBodyInBox(rect, except))
       return true;
 
     if(m_isSolid(rect))
@@ -106,10 +106,10 @@ struct Physics : IPhysics
       auto& me = *m_bodies[p.first];
       auto& other = *m_bodies[p.second];
 
-      auto rect = me.getRect();
-      auto otherRect = other.getRect();
+      auto rect = me.getBox();
+      auto otherBox = other.getBox();
 
-      if(overlaps(rect, otherRect))
+      if(overlaps(rect, otherBox))
         collideBodies(me, other);
     }
   }
@@ -128,7 +128,7 @@ struct Physics : IPhysics
     m_isSolid = isSolid;
   }
 
-  Body* getBodiesInRect(Box myRect, int collisionGroup, bool onlySolid, const Body* except) const
+  Body* getBodiesInBox(Box myBox, int collisionGroup, bool onlySolid, const Body* except) const
   {
     for(auto& body : m_bodies)
     {
@@ -141,9 +141,9 @@ struct Physics : IPhysics
       if(!(body->collisionGroup & collisionGroup))
         continue;
 
-      auto rect = body->getRect();
+      auto rect = body->getBox();
 
-      if(overlaps(rect, myRect))
+      if(overlaps(rect, myBox))
         return body;
     }
 
@@ -151,9 +151,9 @@ struct Physics : IPhysics
   }
 
 private:
-  Body* getSolidBodyInRect(Box myRect, const Body* except) const
+  Body* getSolidBodyInBox(Box myBox, const Body* except) const
   {
-    return getBodiesInRect(myRect, -1, true, except);
+    return getBodiesInBox(myBox, -1, true, except);
   }
 
   vector<Body*> m_bodies;
