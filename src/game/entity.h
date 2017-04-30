@@ -53,7 +53,7 @@ struct Entity : Body
 
   Vector getCenter() const
   {
-    return Vector(pos.x + size.width / 2, pos.y + size.height / 2);
+    return pos + size * 0.5;
   }
 };
 
