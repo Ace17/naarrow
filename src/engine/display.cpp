@@ -25,9 +25,9 @@ using namespace std;
 #include "base/geom.h"
 #include "model.h"
 
+static GLuint g_ProgramId;
 static vector<Model> g_Models;
 static Model g_fontModel;
-static GLuint g_ProgramId;
 
 #ifdef NDEBUG
 #define SAFE_GL(a) a

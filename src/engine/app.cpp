@@ -132,8 +132,8 @@ private:
     m_control.fire = keys[SDL_SCANCODE_Z];
     m_control.jump = keys[SDL_SCANCODE_X];
     m_control.dash = keys[SDL_SCANCODE_C];
-    m_control.suicide = keys[SDL_SCANCODE_R];
 
+    m_control.suicide = keys[SDL_SCANCODE_R];
     m_control.debug = keys[SDL_SCANCODE_SCROLLLOCK];
   }
 
@@ -175,9 +175,9 @@ private:
 
   void fpsChanged(int fps)
   {
-    char szFps[128];
-    sprintf(szFps, "Naarrow (%d FPS)", fps);
-    Display_setCaption(szFps);
+    char title[128];
+    sprintf(title, "Naarrow (%d FPS)", fps);
+    Display_setCaption(title);
   }
 
   void onQuit()

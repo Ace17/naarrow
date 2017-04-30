@@ -7,9 +7,9 @@ endif
 
 ARCH:=$(shell $(CXX) -dumpmachine)
 
-EXT:=exe
+EXT:=.exe
 ifeq ($(ARCH),asmjs-unknown-emscripten)
-	EXT:=html
+	EXT:=.html
 endif
 
 all: true_all
@@ -20,10 +20,10 @@ PKGS:=\
 	SDL2_image\
 	SDL2_mixer\
 
-SDL_CFLAGS:=$(shell pkg-config $(PKGS) --cflags)
-SDL_LDFLAGS:=$(shell pkg-config $(PKGS) --libs --static || echo "ERROR")
+PKG_CFLAGS:=$(shell pkg-config $(PKGS) --cflags)
+PKG_LDFLAGS:=$(shell pkg-config $(PKGS) --libs || echo "ERROR")
 
-ifeq (ERROR,$(SDL_LDFLAGS))
+ifeq (ERROR,$(PKG_LDFLAGS))
   $(error At least one library was not found in the build environment)
 endif
 
@@ -31,18 +31,20 @@ CXXFLAGS+=-Wall -Wextra
 CXXFLAGS+=-Isrc
 CXXFLAGS+=-I.
 CXXFLAGS+=-std=c++14
-CXXFLAGS+=$(SDL_CFLAGS)
-LDFLAGS+=$(SDL_LDFLAGS)
+CXXFLAGS+=$(PKG_CFLAGS)
+LDFLAGS+=$(PKG_LDFLAGS)
 
 CXXFLAGS+=-O3
 
-#LDFLAGS+=-g
 #CXXFLAGS+=-g3
+#LDFLAGS+=-g
 
 #------------------------------------------------------------------------------
 
 SRCS:=\
 	extra/miniz.c\
+	$(BIN)/fragment.glsl.cpp\
+	$(BIN)/vertex.glsl.cpp\
 	src/engine/app.cpp\
 	src/engine/base64.cpp\
 	src/engine/decompress.cpp\
@@ -51,25 +53,23 @@ SRCS:=\
 	src/engine/main.cpp\
 	src/engine/model.cpp\
 	src/engine/sound.cpp\
-	src/game/entity_factory.cpp\
 	src/game/entities/bonus.cpp\
 	src/game/entities/explosion.cpp\
 	src/game/entities/rockman.cpp\
 	src/game/entities/switch.cpp\
+	src/game/entity_factory.cpp\
 	src/game/game.cpp\
+	src/game/level_graph.cpp\
+	src/game/level_tiled.cpp\
 	src/game/physics.cpp\
 	src/game/resources.cpp\
-	src/game/level_graph.cpp\
 	src/game/smarttiles.cpp\
-	src/game/level_tiled.cpp\
-	$(BIN)/vertex.glsl.cpp\
-	$(BIN)/fragment.glsl.cpp\
 
-$(BIN)/naarrow.$(EXT): $(SRCS:%.cpp=$(BIN)/%_cpp.o)
+$(BIN)/naarrow$(EXT): $(SRCS:%.cpp=$(BIN)/%_cpp.o)
 	@mkdir -p $(dir $@)
 	$(CXX) $^ -o '$@' $(LDFLAGS)
 
-TARGETS+=$(BIN)/naarrow.$(EXT)
+TARGETS+=$(BIN)/naarrow$(EXT)
 
 #------------------------------------------------------------------------------
 
@@ -78,11 +78,11 @@ SRCS_TESTS:=\
 	src/engine/base64.cpp\
 	src/engine/decompress.cpp\
 	src/engine/json.cpp\
-	src/game/entity_factory.cpp\
 	src/game/entities/bonus.cpp\
 	src/game/entities/explosion.cpp\
 	src/game/entities/rockman.cpp\
 	src/game/entities/switch.cpp\
+	src/game/entity_factory.cpp\
 	src/game/level_graph.cpp\
 	src/game/physics.cpp\
 	tests/base64.cpp\
@@ -91,20 +91,20 @@ SRCS_TESTS:=\
 	tests/game/level_graph.cpp\
 	tests/game/physics.cpp\
 	tests/json.cpp\
-	tests/util.cpp\
 	tests/tests.cpp\
 	tests/tests_main.cpp\
 	tests/tokenizer.cpp\
+	tests/util.cpp\
 
 # get rid of those
 SRCS_TESTS+=\
 	src/game/level_tiled.cpp\
 
-$(BIN)/tests.$(EXT): $(SRCS_TESTS:%.cpp=$(BIN)/%_cpp.o)
+$(BIN)/tests$(EXT): $(SRCS_TESTS:%.cpp=$(BIN)/%_cpp.o)
 	@mkdir -p $(dir $@)
 	$(CXX) $^ -o '$@' $(LDFLAGS)
 
-TARGETS+=$(BIN)/tests.$(EXT)
+TARGETS+=$(BIN)/tests$(EXT)
 
 $(BIN)/vertex.glsl.cpp: src/engine/vertex.glsl
 	@mkdir -p $(dir $@)

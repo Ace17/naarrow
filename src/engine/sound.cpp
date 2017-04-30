@@ -1,7 +1,4 @@
-/**
- * @brief Audio stuff
- * @author Sebastien Alaiwan
- */
+// Audio stuff
 
 /*
  * Copyright (C) 2017 - Sebastien Alaiwan <sebastien.alaiwan@gmail.com>
