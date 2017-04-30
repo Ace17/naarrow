@@ -13,7 +13,7 @@ struct Sweeper : Entity, Damageable
 {
   Sweeper()
   {
-    size = Size(0.8, 0.8);
+    size = UnitSize * 0.8;
     collisionGroup = CG_WALLS;
     collidesWith = CG_SOLIDPLAYER;
 

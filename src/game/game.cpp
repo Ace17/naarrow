@@ -152,7 +152,7 @@ struct Game : Scene, IGame
           auto const posY = (y + (subTile / 2) * 0.5) * ts;
           auto actor = Actor(Vector(posX, posY), MDL_TILES);
           actor.action = (m_theme % 8) * 16 + composition[subTile];
-          actor.scale = Size(0.5, 0.5);
+          actor.scale = UnitSize * 0.5;
           r.push_back(actor);
         }
       };
