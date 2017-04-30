@@ -131,25 +131,23 @@ typedef GenericVector<int> Vector2i;
 typedef GenericVector<float> Vector2f;
 
 ///////////////////////////////////////////////////////////////////////////////
-// Rect
+// Box
 ///////////////////////////////////////////////////////////////////////////////
 
 template<typename T>
-struct GenericRect : GenericVector<T>, GenericSize<T>
+struct GenericBox : GenericVector<T>, GenericSize<T>
 {
-  GenericRect()
-  {
-  }
+  GenericBox() = default;
 
-  GenericRect(T x, T y, T w, T h) :
+  GenericBox(T x, T y, T w, T h) :
     GenericVector<T>(x, y),
     GenericSize<T>(w, h)
   {
   }
 };
 
-typedef GenericRect<int> Rect2i;
-typedef GenericRect<float> Rect2f;
+typedef GenericBox<int> Rect2i;
+typedef GenericBox<float> Rect2f;
 
 template<typename T>
 bool segmentsOverlap(T s1x1, T s1x2, T s2x1, T s2x2)
@@ -164,7 +162,7 @@ bool segmentsOverlap(T s1x1, T s1x2, T s2x1, T s2x2)
 }
 
 template<typename T>
-bool overlaps(GenericRect<T> const& a, GenericRect<T> const& b)
+bool overlaps(GenericBox<T> const& a, GenericBox<T> const& b)
 {
   assert(a.width >= 0);
   assert(a.height >= 0);

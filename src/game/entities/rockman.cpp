@@ -91,7 +91,7 @@ struct Rockman : Player, Damageable
     r.scale = Size2f(3, 3);
 
     // re-center
-    r.pos += Vector2f(-(r.scale.width - size.width) * 0.5, -0.1);
+    r.pos += Vector(-(r.scale.width - size.width) * 0.5, -0.1);
 
     if(ball)
     {
@@ -337,8 +337,8 @@ struct Rockman : Player, Damageable
       {
         auto b = make_unique<Bullet>();
         auto sign = (dir == LEFT ? -1 : 1);
-        auto offsetV = vel.x ? Vector2f(0, 1) : Vector2f(0, 1);
-        auto offsetH = vel.x ? Vector2f(0.8, 0) : Vector2f(0.7, 0);
+        auto offsetV = vel.x ? Vector(0, 1) : Vector(0, 1);
+        auto offsetH = vel.x ? Vector(0.8, 0) : Vector(0.7, 0);
 
         if(sliding)
         {
@@ -346,7 +346,7 @@ struct Rockman : Player, Damageable
         }
 
         b->pos = pos + offsetV + offsetH * sign;
-        b->vel = Vector2f(0.025, 0) * sign;
+        b->vel = Vector(0.025, 0) * sign;
         game->spawn(b.release());
         game->playSound(SND_FIRE);
         shootDelay = 300;
@@ -361,7 +361,7 @@ struct Rockman : Player, Damageable
 
     if(control.up && ball)
     {
-      Rect2f rect;
+      Box rect;
       rect.width = NORMAL_SIZE.width;
       rect.height = NORMAL_SIZE.height;
       rect.x = pos.x;
@@ -408,7 +408,7 @@ struct Rockman : Player, Damageable
   {
     auto const front = dir == RIGHT ? 0.7 : -0.7;
 
-    Rect2f rect;
+    Box rect;
     rect.x = pos.x + size.width / 2 + front;
     rect.y = pos.y + 0.3;
     rect.width = 0.01;
@@ -444,7 +444,7 @@ struct Rockman : Player, Damageable
   Control control {};
 
   int respawnDelay = 0;
-  Vector2f respawnPoint;
+  Vector respawnPoint;
 
   int upgrades = 0;
 };

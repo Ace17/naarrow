@@ -19,7 +19,7 @@ struct Sign : Entity
   {
     auto r = Actor(pos, MDL_SIGN);
     r.scale = size * 2;
-    r.pos = pos - Vector2f(r.scale.width / 2, r.scale.height / 2);
+    r.pos = pos - Vector(r.scale.width / 2, r.scale.height / 2);
     r.ratio = 0;
     r.action = which;
 

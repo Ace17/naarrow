@@ -86,7 +86,7 @@ struct Game : Scene, IGame
 
     addActorsForTileMap(r, cameraPos);
 
-    Rect2f cameraRect;
+    Box cameraRect;
     cameraRect.width = 16;
     cameraRect.height = 16;
     cameraRect.x = cameraPos.x - cameraRect.width / 2;
@@ -109,7 +109,7 @@ struct Game : Scene, IGame
     }
 
     {
-      Actor lifebar(Vector2f(-6.5, 2), MDL_LIFEBAR);
+      Actor lifebar(Vector(-6.5, 2), MDL_LIFEBAR);
       lifebar.action = 0;
       lifebar.ratio = m_player->health();
       lifebar.scale = Size2f(0.7, 3);
@@ -129,7 +129,7 @@ struct Game : Scene, IGame
     return m_theme;
   }
 
-  void addActorsForTileMap(vector<Actor>& r, Vector2f cameraPos) const
+  void addActorsForTileMap(vector<Actor>& r, Vector cameraPos) const
   {
     auto onCell =
       [&] (int x, int y, int tile)
@@ -150,7 +150,7 @@ struct Game : Scene, IGame
           auto const ts = 1.0;
           auto const posX = (x + (subTile % 2) * 0.5) * ts;
           auto const posY = (y + (subTile / 2) * 0.5) * ts;
-          auto actor = Actor(Vector2f(posX, posY), MDL_TILES);
+          auto actor = Actor(Vector(posX, posY), MDL_TILES);
           actor.action = (m_theme % 8) * 16 + composition[subTile];
           actor.scale = Size2f(0.5, 0.5);
           r.push_back(actor);
@@ -200,7 +200,7 @@ struct Game : Scene, IGame
     if(!m_player)
     {
       m_player = makeRockman().release();
-      m_player->pos = Vector2f(level.start.x, level.start.y);
+      m_player->pos = Vector(level.start.x, level.start.y);
     }
 
     spawn(m_player);
@@ -222,7 +222,7 @@ struct Game : Scene, IGame
 
   int m_level = 1;
   int m_theme = 0;
-  Vector2f m_transform;
+  Vector m_transform;
   bool m_shouldLoadLevel = false;
 
   EventDelegator m_levelBoundary;
@@ -256,7 +256,7 @@ struct Game : Scene, IGame
     m_listeners.erase(sink);
   }
 
-  Vector2f getPlayerPosition() override
+  Vector getPlayerPosition() override
   {
     return m_player->pos;
   }
@@ -300,35 +300,35 @@ struct Game : Scene, IGame
   static Actor getDebugActor(Entity* entity)
   {
     auto rect = entity->getRect();
-    auto r = Actor(Vector2f(rect.x, rect.y), MDL_RECT);
+    auto r = Actor(Vector(rect.x, rect.y), MDL_RECT);
     r.scale = rect;
     return r;
   }
 
-  bool isRectSolid(Rect2f rect)
+  bool isRectSolid(Box rect)
   {
-    if(isPointSolid(Vector2f(rect.x, rect.y)))
+    if(isPointSolid(Vector(rect.x, rect.y)))
       return true;
 
-    if(isPointSolid(Vector2f(rect.x, rect.y + rect.height)))
+    if(isPointSolid(Vector(rect.x, rect.y + rect.height)))
       return true;
 
-    if(isPointSolid(Vector2f(rect.x + rect.width, rect.y)))
+    if(isPointSolid(Vector(rect.x + rect.width, rect.y)))
       return true;
 
-    if(isPointSolid(Vector2f(rect.x + rect.width, rect.y + rect.height)))
+    if(isPointSolid(Vector(rect.x + rect.width, rect.y + rect.height)))
       return true;
 
-    if(isPointSolid(Vector2f(rect.x, rect.y + rect.height / 2)))
+    if(isPointSolid(Vector(rect.x, rect.y + rect.height / 2)))
       return true;
 
-    if(isPointSolid(Vector2f(rect.x + rect.width, rect.y + rect.height / 2)))
+    if(isPointSolid(Vector(rect.x + rect.width, rect.y + rect.height / 2)))
       return true;
 
     return false;
   }
 
-  bool isPointSolid(Vector2f pos)
+  bool isPointSolid(Vector pos)
   {
     auto const x = (int)pos.x;
     auto const y = (int)pos.y;
