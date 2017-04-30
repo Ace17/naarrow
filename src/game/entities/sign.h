@@ -9,7 +9,7 @@ struct Sign : Entity
 {
   Sign(int which_) : which(which_)
   {
-    size = Size2f(4, 2);
+    size = Size(4, 2);
     solid = 0;
     collisionGroup = 0;
     collidesWith = 0;

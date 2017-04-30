@@ -31,7 +31,7 @@ struct Switch : Entity
 {
   Switch(int id_) : id(id_)
   {
-    size = Size2f(0.75, 0.75);
+    size = Size(0.75, 0.75);
   }
 
   virtual Actor getActor() const override
@@ -84,7 +84,7 @@ struct DetectorSwitch : Entity
   DetectorSwitch(int id_)
   {
     id = id_;
-    size = Size2f(0.1, 3);
+    size = Size(0.1, 3);
     solid = false;
     collisionGroup = 0; // dont' trigger other detectors
     collidesWith = CG_PLAYER | CG_SOLIDPLAYER;
@@ -128,7 +128,7 @@ struct Door : Entity, IEventSink
 {
   Door(int id_) : id(id_)
   {
-    size = Size2f(1, 3);
+    size = Size(1, 3);
     solid = true;
   }
 
@@ -193,7 +193,7 @@ struct BreakableDoor : Entity, Damageable
 {
   BreakableDoor()
   {
-    size = Size2f(1, 3);
+    size = Size(1, 3);
     solid = true;
     collisionGroup = CG_WALLS;
   }

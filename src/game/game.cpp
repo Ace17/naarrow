@@ -112,7 +112,7 @@ struct Game : Scene, IGame
       Actor lifebar(Vector(-6.5, 2), MDL_LIFEBAR);
       lifebar.action = 0;
       lifebar.ratio = m_player->health();
-      lifebar.scale = Size2f(0.7, 3);
+      lifebar.scale = Size(0.7, 3);
       r.push_back(lifebar);
     }
 
@@ -152,7 +152,7 @@ struct Game : Scene, IGame
           auto const posY = (y + (subTile / 2) * 0.5) * ts;
           auto actor = Actor(Vector(posX, posY), MDL_TILES);
           actor.action = (m_theme % 8) * 16 + composition[subTile];
-          actor.scale = Size2f(0.5, 0.5);
+          actor.scale = Size(0.5, 0.5);
           r.push_back(actor);
         }
       };
