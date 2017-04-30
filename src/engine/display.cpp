@@ -1,7 +1,4 @@
-/**
- * @brief OpenGL stuff
- * @author Sebastien Alaiwan
- */
+// OpenGL stuff
 
 /*
  * Copyright (C) 2017 - Sebastien Alaiwan <sebastien.alaiwan@gmail.com>

@@ -1,7 +1,4 @@
-/**
- * @brief Game logic
- * @author Sebastien Alaiwan
- */
+// Game logic
 
 /*
  * Copyright (C) 2017 - Sebastien Alaiwan <sebastien.alaiwan@gmail.com>
@@ -17,7 +14,6 @@
 #include <array>
 #include <map>
 #include <set>
-#include <functional>
 #include "base/scene.h"
 #include "base/util.h"
 #include "entities/player.h"
