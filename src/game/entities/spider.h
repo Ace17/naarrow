@@ -14,7 +14,7 @@ struct SpiderBullet : Entity
 {
   SpiderBullet()
   {
-    size = Size(0.3, 0.3);
+    size = UnitSize * 0.3;
     collisionGroup = CG_WALLS;
     collidesWith = CG_SOLIDPLAYER;
   }

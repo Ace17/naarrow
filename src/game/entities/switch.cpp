@@ -31,7 +31,7 @@ struct Switch : Entity
 {
   Switch(int id_) : id(id_)
   {
-    size = Size(0.75, 0.75);
+    size = UnitSize * 0.75;
   }
 
   virtual Actor getActor() const override

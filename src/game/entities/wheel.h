@@ -17,7 +17,7 @@ struct Wheel : Entity, Damageable
   Wheel()
   {
     dir = -1.0f;
-    size = Size(1.5, 1.5);
+    size = UnitSize * 1.5;
     collisionGroup = CG_WALLS;
     collidesWith = CG_SOLIDPLAYER;
   }
