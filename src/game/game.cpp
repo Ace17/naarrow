@@ -25,7 +25,7 @@
 using namespace std;
 
 // from smarttiles
-array<int, 4> computeTileFor(Matrix<int> const& m, int x, int y);
+array<int, 4> computeTileFor(Matrix const& m, int x, int y);
 
 // from physics.cpp
 unique_ptr<IPhysics> createPhysics();
@@ -274,7 +274,7 @@ struct Game : Scene, IGame
 
   set<IEventSink*> m_listeners;
 
-  Matrix<int> m_tiles;
+  Matrix m_tiles;
   vector<SOUND> m_sounds;
   bool m_debug;
   bool m_debugFirstTime = true;

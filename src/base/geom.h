@@ -185,21 +185,21 @@ bool overlaps(GenericRect<T> const& a, GenericRect<T> const& b)
 ///////////////////////////////////////////////////////////////////////////////
 
 template<typename T>
-struct Matrix
+struct Matrix2
 {
-  Matrix() = default;
+  Matrix2() = default;
 
-  Matrix(Matrix const &) = delete;
-  void operator = (Matrix const &) = delete;
+  Matrix2(Matrix2 const &) = delete;
+  void operator = (Matrix2 const &) = delete;
 
-  Matrix(Matrix&& other)
+  Matrix2(Matrix2&& other)
   {
     data = other.data;
     size = other.size;
     other.data = nullptr;
   }
 
-  void operator = (Matrix&& other)
+  void operator = (Matrix2&& other)
   {
     delete[] data;
     data = other.data;
@@ -207,12 +207,12 @@ struct Matrix
     other.data = nullptr;
   }
 
-  Matrix(Size2i size_) : size(size_)
+  Matrix2(Size2i size_) : size(size_)
   {
     resize(size_);
   }
 
-  ~Matrix()
+  ~Matrix2()
   {
     delete[] data;
   }

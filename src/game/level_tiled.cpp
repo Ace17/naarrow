@@ -110,9 +110,9 @@ map<string, json::Object*> getAllLayers(json::Object* js)
 }
 
 static
-Matrix<int> parseTileLayer(json::Object* json)
+Matrix2<int> parseTileLayer(json::Object* json)
 {
-  Matrix<int> tiles;
+  Matrix2<int> tiles;
 
   auto const data = json->getMember<json::String>("data")->value;
   auto const buff = decompressTiles(data);

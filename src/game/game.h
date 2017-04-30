@@ -15,6 +15,8 @@
 #include "base/geom.h"
 #include "base/scene.h"
 
+typedef Matrix2<int> Matrix;
+
 struct Entity;
 
 struct Event
