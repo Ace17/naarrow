@@ -19,7 +19,7 @@
 #include "entities/player.h"
 #include "entities/rockman.h"
 #include "game.h"
-#include "models.h" // MDL_LIFEBAR
+#include "models.h" // MDL_TILES
 #include "room.h"
 
 using namespace std;
