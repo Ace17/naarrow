@@ -32,7 +32,9 @@ unique_ptr<IPhysics> createPhysics();
 
 struct Game : Scene, IGame
 {
-  Game(View* view) : m_view(view), m_tiles(Size2i(1, 1))
+  Game(View* view) :
+    m_view(view),
+    m_tiles(Size2i(1, 1))
   {
     m_shouldLoadLevel = true;
     m_physics = createPhysics();
@@ -195,8 +197,6 @@ struct Game : Scene, IGame
     m_theme = level.theme;
     printf("Now in: %s\n", level.name.c_str());
 
-    Vector2f nextPos;
-
     if(!m_player)
     {
       m_player = makeRockman().release();
@@ -267,9 +267,9 @@ struct Game : Scene, IGame
   }
 
   Player* m_player = nullptr;
-  View* const m_view;
   uvector<Entity> m_entities;
   uvector<Entity> m_spawned;
+  View* const m_view;
   unique_ptr<IPhysics> m_physics;
 
   set<IEventSink*> m_listeners;

@@ -214,7 +214,7 @@ Model rectangularModel(float w, float h)
   SAFE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indices));
   SAFE_GL(glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW));
 
-  model.numIndices = 6;
+  model.numIndices = sizeof(indices) / sizeof(*indices);
 
   return model;
 }
@@ -348,8 +348,6 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
       SAFE_GL(glUniform4f(colorId, 0.8, 0.4, 0.4, 0));
   }
 
-  auto const matrixId = glGetUniformLocation(g_ProgramId, "MVP");
-
   if(actionIdx < 0 || actionIdx >= (int)model.actions.size())
     throw runtime_error("invalid action index");
 
@@ -358,7 +356,7 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
   if(action.textures.empty())
     throw runtime_error("action has no textures");
 
-  int idx = clamp<int>(ratio * action.textures.size(), 0, action.textures.size() - 1);
+  auto const idx = ::clamp<int>(ratio * action.textures.size(), 0, action.textures.size() - 1);
   glBindTexture(GL_TEXTURE_2D, action.textures[idx]);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -383,7 +381,10 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
     dx, dy, 0, 1,
   };
 
-  SAFE_GL(glUniformMatrix4fv(matrixId, 1, GL_FALSE, mat));
+  auto const MVP = glGetUniformLocation(g_ProgramId, "MVP");
+  assert(MVP >= 0);
+
+  SAFE_GL(glUniformMatrix4fv(MVP, 1, GL_FALSE, mat));
 
   SAFE_GL(glBindBuffer(GL_ARRAY_BUFFER, model.buffer));
   SAFE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indices));
