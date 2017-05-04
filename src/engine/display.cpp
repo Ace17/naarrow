@@ -25,6 +25,8 @@ using namespace std;
 #include "base/geom.h"
 #include "model.h"
 
+static GLint g_MVP;
+static GLint g_colorId;
 static GLuint g_ProgramId;
 static vector<Model> g_Models;
 static Model g_fontModel;
@@ -189,9 +191,12 @@ GLuint loadShaders()
 }
 
 static
-Model rectangularModel(float w, float h)
+Model boxModel()
 {
-  const GLfloat myTriangle[] =
+  float w = 1;
+  float h = 1;
+
+  const GLfloat myBox[] =
   {
     0, h, 0, 0, 0,
     0, 0, 0, 0, 1,
@@ -211,7 +216,7 @@ Model rectangularModel(float w, float h)
 
   SAFE_GL(glGenBuffers(1, &model.buffer));
   SAFE_GL(glBindBuffer(GL_ARRAY_BUFFER, model.buffer));
-  SAFE_GL(glBufferData(GL_ARRAY_BUFFER, sizeof(myTriangle), myTriangle, GL_STATIC_DRAW));
+  SAFE_GL(glBufferData(GL_ARRAY_BUFFER, sizeof(myBox), myBox, GL_STATIC_DRAW));
 
   SAFE_GL(glGenBuffers(1, &model.indices));
   SAFE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indices));
@@ -225,7 +230,7 @@ Model rectangularModel(float w, float h)
 static
 Model loadTiledAnimation(string path, int count, int COLS, int SIZE)
 {
-  auto m = rectangularModel(1, 1);
+  auto m = boxModel();
 
   for(int i = 0; i < count; ++i)
   {
@@ -245,7 +250,7 @@ Model loadAnimation(string path)
 {
   if(endsWith(path, ".json"))
   {
-    auto m = rectangularModel(1, 1);
+    auto m = boxModel();
 
     auto m2 = loadModel(path);
     m.actions = move(m2.actions);
@@ -259,7 +264,7 @@ Model loadAnimation(string path)
   }
   else
   {
-    auto m = rectangularModel(1, 1);
+    auto m = boxModel();
     Action action;
     action.addTexture(path, Rect2i());
     m.actions.push_back(action);
@@ -328,6 +333,12 @@ void Display_init(int width, int height)
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   g_fontModel = loadTiledAnimation("res/font.png", 256, 16, 8);
+
+  g_MVP = glGetUniformLocation(g_ProgramId, "MVP");
+  assert(g_MVP >= 0);
+
+  g_colorId = glGetUniformLocation(g_ProgramId, "v_color");
+  assert(g_colorId >= 0);
 }
 
 void Display_setCaption(const char* caption)
@@ -338,9 +349,7 @@ void Display_setCaption(const char* caption)
 static
 void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, float ratio)
 {
-  auto const colorId = glGetUniformLocation(g_ProgramId, "v_color");
-
-  SAFE_GL(glUniform4f(colorId, 0, 0, 0, 0));
+  SAFE_GL(glUniform4f(g_colorId, 0, 0, 0, 0));
 
   if(blinking)
   {
@@ -348,7 +357,7 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
     blinkCounter++;
 
     if((blinkCounter / 4) % 2)
-      SAFE_GL(glUniform4f(colorId, 0.8, 0.4, 0.4, 0));
+      SAFE_GL(glUniform4f(g_colorId, 0.8, 0.4, 0.4, 0));
   }
 
   if(actionIdx < 0 || actionIdx >= (int)model.actions.size())
@@ -359,7 +368,8 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
   if(action.textures.empty())
     throw runtime_error("action has no textures");
 
-  auto const idx = ::clamp<int>(ratio * action.textures.size(), 0, action.textures.size() - 1);
+  auto const N = (int)action.textures.size();
+  auto const idx = ::clamp<int>(ratio * N, 0, N - 1);
   glBindTexture(GL_TEXTURE_2D, action.textures[idx]);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -392,10 +402,7 @@ void drawModel(Rect2f where, Model const& model, bool blinking, int actionIdx, f
     mat[15] = 1;
   }
 
-  auto const MVP = glGetUniformLocation(g_ProgramId, "MVP");
-  assert(MVP >= 0);
-
-  SAFE_GL(glUniformMatrix4fv(MVP, 1, GL_FALSE, mat));
+  SAFE_GL(glUniformMatrix4fv(g_MVP, 1, GL_FALSE, mat));
 
   SAFE_GL(glBindBuffer(GL_ARRAY_BUFFER, model.buffer));
   SAFE_GL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indices));
