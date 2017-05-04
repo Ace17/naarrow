@@ -5,12 +5,7 @@ ifneq (,$(CROSS_COMPILE))
 CXX:=$(CROSS_COMPILE)g++
 endif
 
-ARCH:=$(shell $(CXX) -dumpmachine)
-
-EXT:=.exe
-ifeq ($(ARCH),asmjs-unknown-emscripten)
-	EXT:=.html
-endif
+EXT?=.exe
 
 all: true_all
 
@@ -41,18 +36,7 @@ CXXFLAGS+=-O3
 
 #------------------------------------------------------------------------------
 
-SRCS:=\
-	extra/miniz.c\
-	$(BIN)/fragment.glsl.cpp\
-	$(BIN)/vertex.glsl.cpp\
-	src/engine/app.cpp\
-	src/engine/base64.cpp\
-	src/engine/decompress.cpp\
-	src/engine/display.cpp\
-	src/engine/json.cpp\
-	src/engine/main.cpp\
-	src/engine/model.cpp\
-	src/engine/sound.cpp\
+SRCS_GAME:=\
 	src/game/entities/bonus.cpp\
 	src/game/entities/explosion.cpp\
 	src/game/entities/rockman.cpp\
@@ -65,6 +49,22 @@ SRCS:=\
 	src/game/resources.cpp\
 	src/game/smarttiles.cpp\
 
+#------------------------------------------------------------------------------
+
+SRCS:=\
+	$(SRCS_GAME)\
+	extra/miniz.c\
+	$(BIN)/fragment.glsl.cpp\
+	$(BIN)/vertex.glsl.cpp\
+	src/engine/app.cpp\
+	src/engine/base64.cpp\
+	src/engine/decompress.cpp\
+	src/engine/display.cpp\
+	src/engine/json.cpp\
+	src/engine/main.cpp\
+	src/engine/model.cpp\
+	src/engine/sound.cpp\
+
 $(BIN)/naarrow$(EXT): $(SRCS:%.cpp=$(BIN)/%_cpp.o)
 	@mkdir -p $(dir $@)
 	$(CXX) $^ -o '$@' $(LDFLAGS)
@@ -74,17 +74,11 @@ TARGETS+=$(BIN)/naarrow$(EXT)
 #------------------------------------------------------------------------------
 
 SRCS_TESTS:=\
+	$(SRCS_GAME)\
 	extra/miniz.c\
 	src/engine/base64.cpp\
 	src/engine/decompress.cpp\
 	src/engine/json.cpp\
-	src/game/entities/bonus.cpp\
-	src/game/entities/explosion.cpp\
-	src/game/entities/rockman.cpp\
-	src/game/entities/switch.cpp\
-	src/game/entity_factory.cpp\
-	src/game/level_graph.cpp\
-	src/game/physics.cpp\
 	tests/base64.cpp\
 	tests/decompress.cpp\
 	tests/game/entities.cpp\
