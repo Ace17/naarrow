@@ -198,10 +198,10 @@ Model boxModel()
 
   const GLfloat myBox[] =
   {
-    0, h, 0, 0, 0,
-    0, 0, 0, 0, 1,
-    w, 0, 0, 1, 1,
-    w, h, 0, 1, 0,
+    0, h, 0, /* uv */ 0, 0,
+    0, 0, 0, /* uv */ 0, 1,
+    w, 0, 0, /* uv */ 1, 1,
+    w, h, 0, /* uv */ 1, 0,
   };
 
   const GLushort indices[] =
