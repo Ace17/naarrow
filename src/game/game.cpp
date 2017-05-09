@@ -299,30 +299,30 @@ struct Game : Scene, IGame
 
   static Actor getDebugActor(Entity* entity)
   {
-    auto rect = entity->getBox();
-    auto r = Actor(Vector(rect.x, rect.y), MDL_RECT);
-    r.scale = rect;
+    auto box = entity->getBox();
+    auto r = Actor(Vector(box.x, box.y), MDL_RECT);
+    r.scale = box;
     return r;
   }
 
-  bool isBoxSolid(Box rect)
+  bool isBoxSolid(Box box)
   {
-    if(isPointSolid(Vector(rect.x, rect.y)))
+    if(isPointSolid(Vector(box.x, box.y)))
       return true;
 
-    if(isPointSolid(Vector(rect.x, rect.y + rect.height)))
+    if(isPointSolid(Vector(box.x, box.y + box.height)))
       return true;
 
-    if(isPointSolid(Vector(rect.x + rect.width, rect.y)))
+    if(isPointSolid(Vector(box.x + box.width, box.y)))
       return true;
 
-    if(isPointSolid(Vector(rect.x + rect.width, rect.y + rect.height)))
+    if(isPointSolid(Vector(box.x + box.width, box.y + box.height)))
       return true;
 
-    if(isPointSolid(Vector(rect.x, rect.y + rect.height / 2)))
+    if(isPointSolid(Vector(box.x, box.y + box.height / 2)))
       return true;
 
-    if(isPointSolid(Vector(rect.x + rect.width, rect.y + rect.height / 2)))
+    if(isPointSolid(Vector(box.x + box.width, box.y + box.height / 2)))
       return true;
 
     return false;
