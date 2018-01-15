@@ -13,7 +13,8 @@ PKGS:=\
 	gl\
 	sdl2\
 	SDL2_image\
-	SDL2_mixer\
+	ogg \
+	vorbisfile \
 
 PKG_CFLAGS:=$(shell pkg-config $(PKGS) --cflags)
 PKG_LDFLAGS:=$(shell pkg-config $(PKGS) --libs || echo "ERROR")
