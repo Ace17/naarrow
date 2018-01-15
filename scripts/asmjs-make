@@ -14,7 +14,7 @@ export BIN=bin/asmjs
 export CXX=emcc
 export EXT=".html"
 export CXXFLAGS="-O3 -g0 -DNDEBUG"
-export LDFLAGS="-O3 -g0 --use-preload-plugins --preload-file res -s USE_OGG=1 -s USE_VORBIS=1 -s TOTAL_MEMORY=32000000"
+export LDFLAGS="-O3 -g0 --use-preload-plugins --preload-file res -s USE_OGG=1 -s USE_VORBIS=1 -s TOTAL_MEMORY=$((32 * 1024 * 1024))"
 
 make "$@"
 
